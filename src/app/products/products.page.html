@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Create Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="client != undefined" class="Container">
+      <div class="menuWrapper">
+          <form  #form="ngForm" (ngSubmit)="productSubmit(form)" enctype="multipart/form-data">
+              <ion-grid>
+                  <ion-row justify-content-center>
+                      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                          <div padding>
+                              <h3 class="product-header">Create Product</h3>
+                          </div>
+                          <div padding>
+                              <ion-item>
+                                  <ion-label>Product Category</ion-label>
+                                  <br/>
+                                  <ion-input  name="category" type="text" value="{{ client['category']  }}" placeholder="Product Category"  [(ngModel)]="category" required readonly></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <input id="photo" name="photo"  type="file" placeholder="Product Image" accept="image/*" (change)="changeListener($event)" required />
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="name" type="text" placeholder="Name" ngModel required></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="price" type="number" placeholder="Price" ngModel required></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-select class="select-item" name="unitofmeasure" placeholder="Select Unit of Measure" ngModel required>
+                                      <ion-select-option value="Kg">Kgs</ion-select-option>
+                                      <ion-select-option value="Ltr">Litres</ion-select-option>
+                                  </ion-select>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input name="quantity" type="number" placeholder="Quantity" ngModel required></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input name="barcode" type="text" placeholder="Barcode" ngModel required></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-textarea rows="2" name="description" placeholder="Product Description..." ngModel required></ion-textarea>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-select class="select-item" name="location_of_land" placeholder="Location" ngModel required>
+                                      <ion-select-option value="Nairobi">Nairobi</ion-select-option>
+                                      <ion-select-option value="Nakuru">Nakuru</ion-select-option>
+                                      <ion-select-option value="Eldoret">Eldoret</ion-select-option>
+                                  </ion-select>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="location_of_farm" type="text" placeholder="Location of Farm" ngModel></ion-input>
+                              </ion-item>
+                          </div>
+                          <div padding *ngIf="client['role'] == 'processingcompany'">
+                              <ion-item>
+                                  <ion-input  name="transport_mode" type="text" placeholder="Transport Mode" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="processing_procedure" type="text" placeholder="Processing Procedure" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="processing_chemicals" type="text" placeholder="Processing Chemicals" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="processing_chemicals_companies" type="text" placeholder="Processing Chemicals Companies" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="location_of_warehouse" type="text" placeholder="Location of Warehouse" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="date_of_storage" type="date" placeholder="Date of Storage" ngModel></ion-input>
+                              </ion-item>
+                          </div>
+                          <div padding *ngIf="client['category'] == 'Farm'">
+                              <ion-item>
+                                  <ion-input  name="seedname" type="text" placeholder="Seed Name" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="seedcompany" type="text" placeholder="Seed Company" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="fertilizer" type="text" placeholder="Fertilizer" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="fertilizer_company" type="text" placeholder="Fertilizer Company" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="water_source" type="text" placeholder="Water Source" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="harvest_date" type="date" placeholder="Harvest Date" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="inspection_date" type="date" placeholder="Inspection Date" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="pesticide" type="text" placeholder="Pesticide" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="pesticide_company" type="text" placeholder="Pesticide Company" ngModel></ion-input>
+                              </ion-item>
+                          </div>
+                          <div padding *ngIf="client['category'] == 'Animal'">
+                              <ion-item>
+                                  <ion-input  name="breed_type" type="text" placeholder="Breed Type" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="type_of_farming" type="text" placeholder="Type of Farming" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="animal_age" type="number" placeholder="Animal Age" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="animal_feed_type" type="text" placeholder="Animal Feed Type" ngModel></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                  <ion-input  name="animal_feed_company" type="text" placeholder="Animal Feed Company" ngModel></ion-input>
+                              </ion-item>
+                          </div>
+                          <div padding>
+                              <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block"><b>Submit</b></ion-button>
+                          </div>
+                      </ion-col>
+                  </ion-row>
+              </ion-grid>
+          </form>
+      </div>
+  </div>
+</ion-content>
+

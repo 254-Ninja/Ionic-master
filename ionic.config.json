@@ -1,0 +1,7 @@
+{
+  "name": "lesit",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

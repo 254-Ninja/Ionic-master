@@ -1,0 +1,26 @@
+<ion-header>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-title>Home</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="Container">
+    <div class="menuWrapper">
+      <div *ngIf="client != undefined" align="center">
+        <h1 class="Title">{{ client["name"]  }}</h1>
+      </div>
+      <!--menu-->
+      <div *ngIf="client != undefined" class="FirstRow">
+        <div *ngIf="client['role'] == 'farmer' || client['role'] == 'processingcompany'" (click)="products()" class="Products"><img src="/assets/images/product.png" class="imageHome" alt=""/><br/>Products</div>
+        <div (click)="store()" class="Store"><img src="/assets/images/store.png" class="imageHome" alt=""/><br/>Store</div>
+        <div (click)="scan()" class="Scan"><img src="/assets/images/scan.png" class="imageHome" alt=""/><br/>Scan Product</div>
+        <div *ngIf="client['role'] == 'customer'" (click)="farmers()" class="Farmers"><img src="/assets/images/farmer.png" class="imageHome" alt=""/><br/>Farmers</div>
+        <div *ngIf="client['role'] == 'customer'" (click)="companies()" class="Company"><img src="/assets/images/company.png" class="imageHome" alt=""/><br/>Processing Companies</div>
+      </div>
+    </div>
+  </div>
+</ion-content>

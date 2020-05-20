@@ -1,0 +1,30 @@
+export interface Product {
+    name: string;
+    price: number;
+    unitofmeasure: string;
+    quantity: number;
+    barcode: string;
+    description: any;
+    photo: File;
+    seedname: string;
+    seedcompany: string;
+    fertilizer: string;
+    fertilizer_company: string;
+    water_source: string;
+    location_of_land: string;
+    harvest_date: any;
+    inspection_date: any;
+    pesticide: string;
+    pesticide_company: string;
+    breed_type: string;
+    type_of_farming: string;
+    animal_feed_type: string;
+    animal_feed_company: string;
+    location_of_farm: string;
+    transport_mode: string;
+    processing_procedure: string;
+    processing_chemicals: string;
+    processing_chemicals_companies: string;
+    date_of_storage: string;
+    location_of_warehouse: string;
+}

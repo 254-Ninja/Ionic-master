@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Farmers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar
+          [(ngModel)]="searchFarmer"
+          (ionChange)="setFilteredFarmers()"
+          placeholder="Search By Name"
+  ></ion-searchbar>
+  <ion-searchbar
+          [(ngModel)]="searchLocationFarmer"
+          (ionChange)="setLocationFilteredFarmers()"
+          placeholder="Search By Location"
+  ></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let farmer of farmers">
+      <ion-card class="card" (click)="openFarmer(farmer.id)">
+        <img *ngIf="farmer.image != ''" src="{{farmer.image}}">
+        <img *ngIf="farmer.image == ''" src="/assets/images/farmer.png">
+        <h1 orange>{{ farmer.name }}</h1>
+        <h1 orange>{{ farmer.category }}</h1>
+        <h1>{{ farmer.location }}</h1>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

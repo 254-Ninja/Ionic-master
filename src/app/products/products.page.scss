@@ -1,0 +1,38 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+div.Container{
+  background:#fff;
+}
+div.menuWrapper{
+  padding:0em 1em;
+}
+
+ion-item{
+  --background: #f5f5f5;
+  --color: #444;
+}
+
+ion-button{
+  --background: #e81414;
+  --color: #fff;
+  opacity: 1;
+}
+
+.product-header{
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+}
+
+.select-item {
+  padding-inline-start: 0px;
+  max-width: 100% !important;
+}
+
+.showUploadImage{
+  margin: auto;
+  text-align: center;
+}
+

@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="product != undefined && image != undefined">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{image}}">
+      </ion-avatar>
+      <ion-label>
+        <h3>Sold By {{userName}}</h3>
+        <p>{{userRole}}</p>
+      </ion-label>
+    </ion-item>
+    <img src="{{image}}" alt="ion">
+    <ion-card-header>
+      <ion-card-title>{{product.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        BarCode: {{product.bar_code}}<br/>
+        The product category is {{product.category}}<br/>
+        It is currently sold from {{product.location}}<br/>
+        It`s unit of measure is in {{product.unit_of_measure}}<br/>
+        {{product.description}}<br/>
+        It was added into the system on {{product.created_at}}<br/>
+        Its sold at KES {{price}}<br/>
+      </p>
+      <div *ngIf="product.category == 'Farm'">
+        <h2>Farm Product Details</h2>
+        <p>
+          Seed Name : {{product.extra.seedname}}<br/>
+          Seed Company : {{product.extra.seedcompany}}<br/>
+          Fertilizer : {{product.extra.fertilizer}}<br/>
+          Fertilizer Company : {{product.extra.fertilizer_company}}<br/>
+          Water Source : {{product.extra.water_source}}<br/>
+          Harvest Date : {{product.extra.harvest_date}}<br/>
+          Inspection Date : {{product.extra.inspection_date}}<br/>
+          Pesticide : {{product.extra.pesticide}}<br/>
+          Pesticide Company : {{product.extra.pesticide_company}}<br/>
+        </p>
+      </div>
+      <br/>
+      <br/>
+      <div *ngIf="product.category != 'Farm'">
+        <h2><u>Animal Product Details</u></h2>
+        <p>
+          Breed Type : {{product.extra.breed_type}}<br/>
+          Type of Farming : {{product.extra.type_of_farming}}<br/>
+          Animal Feed Type : {{product.extra.animal_feed_type}}<br/>
+          Animal Feed Company : {{product.extra.animal_feed_company}}<br/>
+          Animal Age : {{product.extra.animal_age}}<br/>
+        </p>
+      </div>
+      <br/>
+      <br/>
+      <div *ngIf="client['role'] == 'processingcompany' || client['role'] == 'customer'">
+        <h2><u>Other Details</u></h2>
+        <p>
+          Transport Mode : {{product.extra.transport_mode}}<br/>
+          Type of Farming : {{product.extra.processing_procedure}}<br/>
+          Processing Chemicals : {{product.extra.processing_chemicals}}<br/>
+          Processing Chemicals Company : {{product.extra.processing_chemicals_companies}}<br/>
+          Location of Warehouse : {{product.extra.location_of_warehouse}}<br/>
+          Date of Storage : {{product.extra.date_of_storage}}<br/>
+        </p>
+      </div>
+    </ion-card-content>
+
+
+    <ion-footer *ngIf="client['role'] == 'customer'">
+      <ion-row center text-center>
+        <h4 class="rateH">Rate Product</h4>
+      </ion-row>
+      <ion-row center text-center>
+          <div class="rateB">
+              <button class="buttonCss" (click)="onRateChange(1)"><img src="/assets/icon/star.png" class="rateCss"></button>
+              <button class="buttonCss" (click)="onRateChange(2)"><img src="/assets/icon/star.png" class="rateCss"></button>
+              <button class="buttonCss" (click)="onRateChange(3)"><img src="/assets/icon/star.png" class="rateCss"></button>
+              <button class="buttonCss" (click)="onRateChange(4)"><img src="/assets/icon/star.png" class="rateCss"></button>
+              <button class="buttonCss" (click)="onRateChange(5)"><img src="/assets/icon/star.png" class="rateCss"></button>
+          </div>
+      </ion-row>
+      <ion-row>
+        <ion-col center text-center>
+          <ion-button (click)="flagPrompt()" size="large" expand="block" color="danger"><b>Flag Product</b></ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col center text-center>
+          <ion-button (click)="buyPrompt()" size="large" expand="block"><b>Buy Product</b></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+</ion-content>
+

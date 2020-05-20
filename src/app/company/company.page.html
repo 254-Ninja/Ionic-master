@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Processing Company</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="company != undefined">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img *ngIf="image != ''" src="{{image}}">
+        <img *ngIf="image == ''" src="/assets/images/company.png">
+      </ion-avatar>
+      <ion-label>
+        <h3>{{company.name}}</h3>
+        <p>Joined on {{company.created_at}}</p>
+      </ion-label>
+    </ion-item>
+    <img *ngIf="image != ''" src="{{image}}" alt="ion" class="userImage">
+    <img *ngIf="image == ''" src="/assets/images/company.png" alt="ion" class="userImage">
+    <ion-card-header>
+      <ion-card-title>{{company.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Email Address: {{company.email}}<br/>
+        Phone Number: {{company.phone_number}}<br/>
+        Location {{company.location}}<br/>
+        Product Category {{category}}<br/>
+        Current Rating: <ion-rating [rate]="rate" readonly="false" size="default" (change)="onRateChange($event)"></ion-rating>
+      </p>
+    </ion-card-content>
+
+
+    <ion-footer>
+      <ion-row center text-center>
+        <h4 class="rateH">Rate Company</h4>
+      </ion-row>
+      <ion-row center text-center>
+        <ion-rating [rate]="0" readonly="false" size="default" (change)="onRateChange($event)"></ion-rating>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+</ion-content>
+

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Farmer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="farmer != undefined">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img *ngIf="image != ''" src="{{image}}">
+        <img *ngIf="image == ''" src="/assets/images/farmer.png">
+      </ion-avatar>
+      <ion-label>
+        <h3>{{farmer.name}}</h3>
+        <p>Joined on {{farmer.created_at}}</p>
+      </ion-label>
+    </ion-item>
+    <img *ngIf="image != ''" src="{{image}}" alt="ion" class="userImage">
+    <img *ngIf="image == ''" src="/assets/images/farmer.png" alt="ion" class="userImage">
+    <ion-card-header>
+      <ion-card-title>{{farmer.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Email Address: {{farmer.email}}<br/>
+        Phone Number: {{farmer.phone_number}}<br/>
+        Location {{farmer.location}}<br/>
+        Product Category {{category}}<br/>
+        Current Rating: <ion-rating [rate]="rate" readonly="false" size="default" (change)="onRateChange($event)"></ion-rating>
+      </p>
+    </ion-card-content>
+
+
+    <ion-footer>
+      <ion-row center text-center>
+        <h4 class="rateH">Rate Farmer</h4>
+      </ion-row>
+      <ion-row center text-center>
+        <ion-rating [rate]="0" readonly="false" size="default" (change)="onRateChange($event)"></ion-rating>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+</ion-content>
+

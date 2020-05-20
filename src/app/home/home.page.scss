@@ -1,0 +1,64 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+div.Container{
+  background:#fff;
+}
+div.menuWrapper{
+  padding:0em 3em;
+}
+
+div.FirstRow
+{
+  clear:both;
+  padding:2em 0em 2em 0em;
+}
+
+div.Products,
+div.Store,
+div.Scan,
+div.Orders,
+div.Farmers,
+div.Company
+{
+  width:80%;
+  padding-bottom: 20px;
+  text-align: center;
+  margin: auto;
+  font-size: 16pt
+}
+
+.imageHome {
+  width: 150px;
+  height: 100px;
+  margin: auto;
+}

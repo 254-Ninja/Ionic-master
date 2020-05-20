@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Store</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar
+          [(ngModel)]="searchTerm"
+          (ionChange)="setFilteredItems()"
+          placeholder="Search By Product Name"
+  ></ion-searchbar>
+  <ion-searchbar
+          [(ngModel)]="searchLocationTerm"
+          (ionChange)="setLocationFilteredItems()"
+          placeholder="Search By Product Location"
+  ></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let product of products">
+      <ion-card class="card" (click)="openProduct(product.id)">
+        <img src="{{ product.image }}">
+        <h1 orange>{{ product.name }}</h1>
+        <h1 orange>{{ product.barcode }}</h1>
+        <h1>KES {{ product.price }}</h1>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
