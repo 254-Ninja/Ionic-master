@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
   }
 
   products() {
-    this.navCtrl.navigateRoot('/Add products');
+    this.navCtrl.navigateRoot('/products');
   }
   store() {
     this.navCtrl.navigateRoot('/store');
